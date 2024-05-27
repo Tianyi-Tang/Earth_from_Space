@@ -33,6 +33,9 @@ const earthMaterial = new THREE.ShaderMaterial({vertexShader:planetVertexShader,
 const earth = new THREE.Mesh(planetGeometry, earthMaterial);
 scene.add(earth);
 
+//monon
+
+
 //earth atmosphere 
 const atmosphereGeometry = new THREE.SphereGeometry(5.7,20,20);
 const atmosphereMaterial = new THREE.ShaderMaterial({vertexShader:atmosphereVertexShader,fragmentShader:atmosphereFragmentShader,blending:THREE.AdditiveBlending, side:THREE.BackSide});
