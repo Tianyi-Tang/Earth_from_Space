@@ -51,7 +51,7 @@ const moonMaterial = new THREE.MeshStandardMaterial({
 const moon = new THREE.Mesh(moonGeometry,moonMaterial);
 const moonObject = new THREE.Object3D();
 moonObject.add(moon);
-scene.add(moonObject);
+moon.position.y -= 1.5;
 moon.position.x =11;
 
 //light
@@ -72,8 +72,7 @@ const cloudLayer = new THREE.Mesh(cloudGeometry,cloudMaterial);
 scene.add(cloudLayer);
 
 scene.background = textureLoarder.load(skyImg);
-
-camera.position.z = 18;
+camera.position.z = 17;
 
 const earthChanging = {
   rotationSpeed: 0.002,
@@ -82,7 +81,8 @@ const earthChanging = {
 
 const moonChanging ={
   rotationSpeed: 0.002,
-  revolutionSpeed: 0.004
+  revolutionSpeed: 0.004,
+  show_moon: false
 }
 
 const gui = new dat.GUI();
@@ -100,6 +100,14 @@ planet.add(earthChanging, "clouds").onChange(
 const satellite = gui.addFolder('Moon');
 satellite.add(moonChanging,"rotationSpeed",0,0.01);
 satellite.add(moonChanging,"revolutionSpeed",0,0.01);
+satellite.add(moonChanging,"show_moon").onChange(
+  function(){
+    if(!moonChanging.show_moon)
+      scene.remove(moonObject);
+    else
+      scene.add(moonObject);
+  }
+)
 
 function animate() {
   requestAnimationFrame(animate);
