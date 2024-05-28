@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import * as dat from 'dat.gui';
 
 import earthMap from './img/earthMap.jpeg';
+import moonMap from './img/moon-texture.jpg'
+import moonHeightMap from './img/moon-displacement.jpg'
 import skyImg from './img/sky.jpeg';
 import cloud from './img/clouds.jpeg';
 import heightMaping from './img/displaymentMap.png';
@@ -34,7 +36,26 @@ const earth = new THREE.Mesh(planetGeometry, earthMaterial);
 scene.add(earth);
 
 //monon
+const moonGeometry = new THREE.SphereGeometry(1.75,30,30);
+const moonTexture =  textureLoarder.load(moonMap);
+const moonDisplacementMap = textureLoarder.load(moonHeightMap);
+const moonMaterial = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    map: moonTexture,
+    displacementMap: moonDisplacementMap,
+    displacementScale: 0.05,
+    bumpMap: moonDisplacementMap,
+    bumpScale: 0.04,
+})
 
+const moon = new THREE.Mesh(moonGeometry,moonMaterial);
+scene.add(moon);
+moon.position.x =13;
+
+//light
+const light = new THREE.DirectionalLight(0xffffff,1);
+light.position.z += 5;
+scene.add(light);
 
 //earth atmosphere 
 const atmosphereGeometry = new THREE.SphereGeometry(5.7,20,20);
