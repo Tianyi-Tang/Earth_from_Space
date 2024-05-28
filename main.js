@@ -29,7 +29,7 @@ const ambientLight = new THREE.AmbientLight(0x333333);
 scene.add(ambientLight); 
 
 //earth
-const planetGeometry = new THREE.SphereGeometry(5,50,50);
+const planetGeometry = new THREE.SphereGeometry(7,80,80);
 
 const earthMaterial = new THREE.ShaderMaterial({vertexShader:planetVertexShader,fragmentShader:planetFragmentShader,uniforms:{planetTexure:{value:textureLoarder.load(earthMap)},heightMap:{value:textureLoarder.load(heightMaping)},displacementScale:{value:0.15}}});
 const earth = new THREE.Mesh(planetGeometry, earthMaterial);
@@ -58,13 +58,13 @@ light.position.z += 5;
 scene.add(light);
 
 //earth atmosphere 
-const atmosphereGeometry = new THREE.SphereGeometry(5.7,20,20);
+const atmosphereGeometry = new THREE.SphereGeometry(7.7,20,20);
 const atmosphereMaterial = new THREE.ShaderMaterial({vertexShader:atmosphereVertexShader,fragmentShader:atmosphereFragmentShader,blending:THREE.AdditiveBlending, side:THREE.BackSide});
 const atmosphere = new THREE.Mesh(atmosphereGeometry,atmosphereMaterial);
 scene.add(atmosphere);
 
 //earth clouds
-const cloudGeometry = new THREE.SphereGeometry(5.5,50,50);
+const cloudGeometry = new THREE.SphereGeometry(7.5,70,70);
 const cloudMaterial = new THREE.MeshBasicMaterial({map:textureLoarder.load(cloud),transparent:true, opacity:0.3})
 const cloudLayer = new THREE.Mesh(cloudGeometry,cloudMaterial);
 scene.add(cloudLayer);
@@ -74,7 +74,7 @@ scene.background = textureLoarder.load(skyImg);
 camera.position.z = 15;
 
 const earthChanging = {
-  rotationSpeed: 0.003,
+  rotationSpeed: 0.002,
   clouds: true
 };
 
