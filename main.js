@@ -49,8 +49,10 @@ const moonMaterial = new THREE.MeshStandardMaterial({
 })
 
 const moon = new THREE.Mesh(moonGeometry,moonMaterial);
-scene.add(moon);
-moon.position.x =13;
+const moonObject = new THREE.Object3D();
+moonObject.add(moon);
+scene.add(moonObject);
+moon.position.x =11;
 
 //light
 const light = new THREE.DirectionalLight(0xffffff,1);
@@ -71,12 +73,17 @@ scene.add(cloudLayer);
 
 scene.background = textureLoarder.load(skyImg);
 
-camera.position.z = 15;
+camera.position.z = 18;
 
 const earthChanging = {
   rotationSpeed: 0.002,
   clouds: true
 };
+
+const moonChanging ={
+  rotationSpeed: 0.002,
+  revolutionSpeed: 0.004
+}
 
 const gui = new dat.GUI();
 const planet = gui.addFolder('Earth');
@@ -90,10 +97,17 @@ planet.add(earthChanging, "clouds").onChange(
       scene.add(cloudLayer);
   });
 
+const satellite = gui.addFolder('Moon');
+satellite.add(moonChanging,"rotationSpeed",0,0.01);
+satellite.add(moonChanging,"revolutionSpeed",0,0.01);
+
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
   earth.rotation.y += earthChanging.rotationSpeed;
+ 
+  moonObject.rotateY(moonChanging.revolutionSpeed);
+  moon.rotation.y += moonChanging.rotationSpeed;
 
   cloudLayer.rotation.y += earthChanging.rotationSpeed*1.1;
   cloudLayer.rotation.x += 0.00025;
