@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "dat.gui": "^0.7.9",
+    "http-server": "^14.1.1",
     "three": "^0.155.0"
   },
   "devDependencies": {
