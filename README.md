@@ -6,16 +6,16 @@ The model allows for self-rotation and provides users with the ability to adjust
 ## Project Demonstration
 Initial view of project with coulds:
 <br>
-<img src="/Game_demonstrate_img/Normal_Project.png" alt="Normal_Project" width="700" height="500">
+<img src="/Game_demonstrate_img/Normal_Project.png" alt="Normal_Project" width="750" height="500">
 <br>
 view of project after removing the coulds:
 <br>
-<img src="/Game_demonstrate_img/Remove_clouds.png" alt="Remove_clouds" width="700" height="500">
+<img src="/Game_demonstrate_img/Remove_clouds.png" alt="Remove_clouds" width="750" height="500">
 <br>
 
 view of project after display the moon:
 <br>
-<img src="/Game_demonstrate_img/With_moon.png" alt="With_moon" width="700" height="500">
+<img src="/Game_demonstrate_img/With_moon.png" alt="With_moon" width="750" height="500">
 <br>
 
 ## Getting Started
